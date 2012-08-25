@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin 
+  id="odt" 
+  name="ODT -Onion Development Tool-"
+  version="1.0.0"
+  provider-name=""
+  class="org.onion_lang.odt.ODTPlugin">
+  <runtime>
+    <library name="odt.jar">
+      <export name="*"/>
+    </library>
+  </runtime>
+  <requires>
+    <import plugin="org.eclipse.ui"/>
+    <import plugin="org.eclipse.core.runtime"/>
+    <import plugin="org.eclipse.ui.editors"/>
+    <import plugin="org.eclipse.ui.ide"/>
+    <import plugin="org.eclipse.text"/>
+    <import plugin="org.eclipse.ui.workbench.texteditor"/>
+    <import plugin="org.eclipse.jdt.ui"/>
+    <import plugin="org.eclipse.debug.core"/>
+    <import plugin="org.eclipse.jface.text"/>
+  </requires>
+  <extension point="org.eclipse.ui.editors">
+    <editor
+      class = "org.onion_lang.odt.editor.OnionEditor"
+      default = "false"
+      icon = ""
+      name = "Onion Editor"
+      id = "org.onion-lang.odt.editor.OnionEditor"
+      extensions = "on"/>
+  </extension>
+  <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+    <launchConfigurationType
+      delegate = "org.onion_lang.odt.OnionLaunchConfigDelegate"
+      name = "%onion.launchConfigurationName"
+      modes = "run,debug"
+      id = "org.onion_lang.odt.local"/>
+  </extension>
+</plugin>
